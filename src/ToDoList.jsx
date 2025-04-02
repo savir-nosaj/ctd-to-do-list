@@ -1,3 +1,5 @@
+import ToDoListItem from "./ToDoListItem";
+
 function ToDoList() {
     const todos = [
         {id: 1, title: "Review resources"},
@@ -6,9 +8,18 @@ function ToDoList() {
     ];
     return (
         <ul>
-            {todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
+            {todos.map((item) => {
+                return (
+                    // create instance of component
+                    <ToDoListItem
+                        // pass props
+                        key = {item.id}
+                        todo = {item.title}
+                    />
+                );
+            })}
         </ul>
-    ) 
+    );
 }
 
 export default ToDoList
