@@ -4,7 +4,14 @@ function ToDoList({todoList}) {
 
     return (
         <ul>
-            {todoList.map(todo => <ToDoListItem key = {Date.now()} todo = {todo}/>)}
+            {todoList.map((todo) => {
+                return (
+                    <ToDoListItem
+                        key = {todo.id}
+                        todo = {todo.title}
+                    />
+                )
+            })}
         </ul>
     );
 }
