@@ -6,12 +6,27 @@ import { useState } from 'react';
 function App() {
   const [todoList, setTodoList] = useState([]);
 
+  // function recieves data from child comp (ToDoForm) => appends new object (newTodo) into todoList arr, with specific props
   function handleAddTodo(title) {
     const newTodo = {
       id: Date.now(),
-      title
+      title: title,
+      isCompleted: false
     }
+    // push newTodo object into todoList arr
     setTodoList([...todoList, newTodo]);
+  }
+
+  // retrieves data from child (ToDoList), containing id of item checked in form => sets isCompleted prop to true
+  function onCompleteTodo(id) {
+    const updatedTodos = todoList.map((todo) => {
+      if(todo.id === id) {
+        return {...todo, isCompleted: true}
+      }
+      return todo;
+    });
+    // add same item, but with isCompleted prop changed to true
+    setTodoList(updatedTodos);
   }
 
   return (
@@ -22,6 +37,7 @@ function App() {
       />
       <ToDoList
         todoList = {todoList}
+        onCompletedTodo = {onCompleteTodo}
       />
     </div>
   );
