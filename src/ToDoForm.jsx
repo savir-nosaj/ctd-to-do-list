@@ -5,9 +5,9 @@ function ToDoForm ({onAddTodo}) {
     const todoTitleInput = useRef("");
     
     // local handleAddTodo function performs the following:
-    function handleAddTodo(title){
+    function handleAddTodo(event){
         // prevent page re-render
-        title.preventDefault();
+        event.preventDefault();
         // comm. current state (workingTodo) data back to parent
         onAddTodo(workingTodoTitle);
         // clear state
