@@ -33,11 +33,11 @@ function App() {
     <div>
       <h1>My Todos</h1>
       <ToDoForm
-        onAddTodo = {handleAddTodo}
+        onAddTodo={handleAddTodo}
       />
       <ToDoList
-        todoList = {todoList}
-        onCompletedTodo = {onCompleteTodo}
+        todoList={todoList}
+        onCompletedTodo={onCompleteTodo}
       />
     </div>
   );
