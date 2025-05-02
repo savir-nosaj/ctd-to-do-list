@@ -12,15 +12,14 @@ function ToDoList({todoList, onCompletedTodo}) {
         ) : (
         // 2) minimum of 1 value in state arr
             <ul>
-                {filteredTodoList.map((todo) => {
+                {filteredTodoList.map((todo) => (
                     // for each value in state arr, create instance of ToDoListItem comp., passing same props of local parent
-                    return (
-                        <ToDoListItem
-                            todo = {todo}
-                            onCompletedTodo = {onCompletedTodo}
-                        />
-                    );
-                })}
+                    <ToDoListItem
+                        key={todo.id}
+                        todo={todo}
+                        onCompletedTodo={onCompletedTodo}
+                    />
+                ))}
             </ul>
         )
     );
