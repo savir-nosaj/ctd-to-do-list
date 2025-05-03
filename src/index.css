@@ -1,1 +1,7 @@
-
+/* Dark Mode */
+body {
+    background-color: #000;
+}
+h1, p, label, li {
+    color: #fff;
+}
