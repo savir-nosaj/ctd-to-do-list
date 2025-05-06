@@ -1,5 +1,5 @@
-import ToDoForm from './ToDoForm';
-import ToDoList from './ToDoList';
+import ToDoForm from './features/ToDoForm';
+import ToDoList from './features/TodoList/ToDoList';
 import './App.css';
 import { useState } from 'react';
 
@@ -19,6 +19,7 @@ function App() {
 
   // retrieves data from child (ToDoList), containing id of item checked in form => sets isCompleted prop to true
   function onCompleteTodo(id) {
+    // updatedTodos (on re-render) will update array and store objects with prop isCompleted, then push to and update toDo list
     const updatedTodos = todoList.map((todo) => {
       if(todo.id === id) {
         return {...todo, isCompleted: true}
@@ -26,6 +27,17 @@ function App() {
       return todo;
     });
     // add same item, but with isCompleted prop changed to true
+    setTodoList(updatedTodos);
+  }
+
+  // update the obj's title prop to updated value sent from ToDoListItem
+  function updateTodo(editedTodo) {
+    const updatedTodos = todoList.map((todo) => {
+      if(todo.id === editedTodo.id) {
+        return editedTodo;
+      }
+      return todo;
+    });
     setTodoList(updatedTodos);
   }
 
@@ -38,6 +50,7 @@ function App() {
       <ToDoList
         todoList={todoList}
         onCompletedTodo={onCompleteTodo}
+        onUpdateTodo={updateTodo}
       />
     </div>
   );
